@@ -1,0 +1,12 @@
+Premium Agro — Field Evidence Review fix
+
+Root cause:
+FieldApprovals.jsx created a new project array every time useDb's useSyncExternalStore snapshot selector was called. This can make React repeatedly detect a changed snapshot and throw "Maximum update depth exceeded".
+
+To apply the patch:
+1. Extract this ZIP directly into your integrated project root (for example D:\FP or D:\FP-Email-Verification).
+2. Allow it to overwrite src\features\admin\FieldApprovals.jsx.
+3. Leave backend/.env and the MongoDB database untouched.
+4. Stop the Vite terminal with Ctrl+C, then start again with npm run dev from the project root. A full page refresh after replacement should also load the change, but restarting ensures it is current.
+
+No database migration, seed command, npm package or credential change is needed.
